@@ -1,4 +1,4 @@
-FROM dpsxp/ffmpeg:source
+FROM dpsxp/ffmpeg:jessie
 
 ENV RUBY_MAJOR 2.2
 ENV RUBY_VERSION 2.2.1
@@ -41,7 +41,7 @@ RUN mkdir -p /usr/src/ruby \
       && autoconf \
       && ./configure --disable-install-doc \
       && make -j"$(nproc)" \
-      make install \
+      && make install \
       && apt-get purge -y --auto-remove bison libgdbm-dev ruby \
       && rm -r /usr/src/ruby
 
